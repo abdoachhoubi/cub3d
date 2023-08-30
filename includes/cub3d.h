@@ -6,7 +6,7 @@
 /*   By: aanouari <aanouari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 18:09:55 by aanouari          #+#    #+#             */
-/*   Updated: 2023/08/26 18:09:59 by aanouari         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:16:12 by aanouari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ void		print_arr(char **arr);
 int			parse_maps(t_game *game);
 void		check_valid_map(t_game *game);
 int			longest_line(char **arr);
-char 		*ft_repeat(int count, char c);
+char		*ft_repeat(int count, char c);
 char		*fill_line_with_spaces(char *line, int len);
-char		 **fill_map_with_spaces(char **map);
+char		**fill_map_with_spaces(char **map);
 char		**surround_map_with_spaces(char **map);
-char 		**clone_arr(char **arr);
+char		**clone_arr(char **arr);
 void		is_surrounded_by_walls(t_game *game);
 char		*get_map(t_game *game);
 int			map_list(t_game *game, char *map);

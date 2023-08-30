@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_attrs1.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aanouari <aanouari@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/30 14:17:03 by aanouari          #+#    #+#             */
+/*   Updated: 2023/08/30 14:51:31 by aanouari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub.h"
 
 int	attr_error(t_game *game, int code, char *attr)
@@ -17,7 +29,8 @@ int	attr_error(t_game *game, int code, char *attr)
 		ft_putstr_fd(attr, 2);
 		ft_putendl_fd(" attribute!"RESET, 2);
 	}
-	reset_tools(game);
+	if (game)
+		reset_tools(game);
 	exit(0);
 }
 
@@ -51,7 +64,9 @@ int	check_color(char *color)
 		ret = 0;
 	while (trimed_color[i])
 	{
-		if (ft_isdigit(trimed_color[i]) || ft_iswhitespace(trimed_color[i]))
+		if (ft_iswhitespace(trimed_color[i]))
+			attr_error(NULL, 2, NULL);
+		if (ft_isdigit(trimed_color[i]))
 			i++;
 		else
 		{
