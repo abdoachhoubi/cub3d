@@ -49,11 +49,11 @@ int	get_single_attribute(t_game *game, char **scene, int i)
 	if (ft_arrlen(split_attr) != 2)
 		attr_error(game, 1, NULL);
 	if (!is_attr(game, split_attr[0], i))
-		send_attr_err(game);
+		attr_error(game, 1, NULL);
 	if (scene && scene[i] && comp_attr(split_attr[0]))
 	{
 		if (!set_attr(game, split_attr[0], split_attr[1]))
-			attr_error(game, 0, NULL);
+			attr_error(game, 1, NULL);
 		split_attr = free_arr(split_attr);
 	}
 	else if (scene && scene[i]

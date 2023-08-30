@@ -40,21 +40,3 @@ int	is_attr(t_game *game, char *s, int i)
 		return (0);
 	return (1);
 }
-
-void	send_attr_err(t_game *game)
-{
-	if (!game->walls.ea_path)
-		attr_error(game, 4, "EA");
-	else if (!game->walls.no_path)
-		attr_error(game, 4, "NO");
-	else if (!game->walls.we_path)
-		attr_error(game, 4, "WE");
-	else if (!game->walls.so_path)
-		attr_error(game, 4, "SO");
-	else if (game->ceiling == -1)
-		attr_error(game, 4, "C");
-	else if (game->floor == -1)
-		attr_error(game, 4, "F");
-	else
-		attr_error(game, 4, "");
-}

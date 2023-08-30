@@ -94,7 +94,6 @@ int			check_attributes_i(t_game *game);
 int			set_color(t_game *game, char *attr, char *value);
 int			check_attr(t_game *game);
 int			is_attr(t_game *game, char *s, int i);
-void		send_attr_err(t_game *game);
 int			get_single_attribute(t_game *game, char **scene, int i);
 int			get_attributes(t_game *game);
 void		close_array(int *arr, int size);
