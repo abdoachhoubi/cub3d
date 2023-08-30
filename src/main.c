@@ -63,6 +63,13 @@ static void	init_game_window(t_game *game, t_window *win)
 		game->img_map->img_ptr, 0, 0);
 }
 
+int	cub_not_found(t_game *game, char *file)
+{
+	free(game);
+	print_error(FILE_ERROR, file);
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	t_window	*win;
@@ -75,7 +82,7 @@ int	main(int ac, char **av)
 	game = (t_game *)malloc(sizeof(t_game));
 	game->scene_fd = open(av[1], O_RDONLY);
 	if (game->scene_fd < 3)
-		return (print_error(FILE_ERROR, av[1]));
+		return (cub_not_found(game, av[1]));
 	parse_scene(game);
 	if (!game)
 		return (-1);

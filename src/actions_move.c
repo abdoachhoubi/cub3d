@@ -20,6 +20,15 @@ void	move_right(t_game *game)
 	p.x = game->player->point.x;
 	p.y = game->player->point.y;
 	p = add_vec(p, vec(game->player->angle - r_angle(90), game->player->mag));
+	if (game->map[(int)((p.y + 10) / TILE_SIZE)]
+		[(int)((p.x + 10) / TILE_SIZE)] == '1')
+		return ;
+	if (game->map[(int)((game->player->point.y) / TILE_SIZE)]
+		[(int)((p.x) / TILE_SIZE)] == '1')
+		return ;
+	if (game->map[(int)((p.y) / TILE_SIZE)]
+		[(int)((game->player->point.x) / TILE_SIZE)] == '1')
+		return ;
 	if (p.x > game->player->width || p.x < 0
 		|| p.y > game->player->height || p.y < 0)
 		return ;
@@ -38,6 +47,15 @@ void	move_left(t_game *game)
 	p.x = game->player->point.x;
 	p.y = game->player->point.y;
 	p = add_vec(p, vec(game->player->angle + r_angle(90), game->player->mag));
+	if (game->map[(int)((p.y + 10) / TILE_SIZE)]
+		[(int)((p.x + 10) / TILE_SIZE)] == '1')
+		return ;
+	if (game->map[(int)((game->player->point.y) / TILE_SIZE)]
+		[(int)((p.x) / TILE_SIZE)] == '1')
+		return ;
+	if (game->map[(int)((p.y) / TILE_SIZE)]
+		[(int)((game->player->point.x) / TILE_SIZE)] == '1')
+		return ;
 	if (p.x > game->player->width || p.x < 0
 		|| p.y > game->player->height || p.y < 0)
 		return ;

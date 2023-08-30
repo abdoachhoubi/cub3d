@@ -15,7 +15,7 @@
 
 # define COLOR_RED "\033[0;31m"
 # define COLOR_RESET "\033[0m"
-# define MAP_MAX 1000000
+# define MAP_MAX 100000000
 # define ARG_ERROR "\033[1;31mError: invalid args!\n\033[0m\tUsage:\
 \033[1;32m./cub3d <path_to_scene (.cub file)>\033[0m"
 # define FILE_ERROR "\033[1;31mError: couldn't open file: \033[0m"

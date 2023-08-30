@@ -39,41 +39,6 @@ int	check_attr(t_game *game)
 	return (1);
 }
 
-int	is_attr(t_game *game, char *s, int i)
-{
-	if (!s || !s[0])
-		return (1);
-	if (check_attr(game))
-	{
-		if (game->map_start == 0)
-			game->map_start = i;
-		return (1);
-	}
-	if (!((!ft_strncmp(s, "NO", ft_strlen(s)) || !ft_strncmp(s, "SO", ft_strlen(s))
-				|| !ft_strncmp(s, "WE", ft_strlen(s)) || !ft_strncmp(s, "EA", ft_strlen(s))
-				|| !ft_strncmp(s, "F", ft_strlen(s)) || !ft_strncmp(s, "C", ft_strlen(s))) && !check_attr(game)))
-		return (0);
-	return (1);
-}
-
-void	send_attr_err(t_game *game)
-{
-	if (!game->walls.ea_path)
-		attr_error(game, 4, "EA");
-	else if (!game->walls.no_path)
-		attr_error(game, 4, "NO");
-	else if (!game->walls.we_path)
-		attr_error(game, 4, "WE");
-	else if (!game->walls.so_path)
-		attr_error(game, 4, "SO");
-	else if (game->ceiling == -1)
-		attr_error(game, 4, "C");
-	else if (game->floor == -1)
-		attr_error(game, 4, "F");
-	else
-		attr_error(game, 4, "");
-}
-
 int	get_single_attribute(t_game *game, char **scene, int i)
 {
 	char	**split_attr;
@@ -85,16 +50,14 @@ int	get_single_attribute(t_game *game, char **scene, int i)
 		attr_error(game, 1, NULL);
 	if (!is_attr(game, split_attr[0], i))
 		send_attr_err(game);
-	if (scene && scene[i] && (!ft_strncmp(split_attr[0], "NO", ft_strlen(split_attr[0]))
-			|| !ft_strncmp(split_attr[0], "SO", ft_strlen(split_attr[0]))
-			|| !ft_strncmp(split_attr[0], "WE", ft_strlen(split_attr[0]))
-			|| !ft_strncmp(split_attr[0], "EA", ft_strlen(split_attr[0]))))
+	if (scene && scene[i] && comp_attr(split_attr[0]))
 	{
 		if (!set_attr(game, split_attr[0], split_attr[1]))
 			attr_error(game, 0, NULL);
 		split_attr = free_arr(split_attr);
 	}
-	else if (scene && scene[i] && (!ft_strncmp(split_attr[0], "F", ft_strlen(split_attr[0]))
+	else if (scene && scene[i]
+		&& (!ft_strncmp(split_attr[0], "F", ft_strlen(split_attr[0]))
 			|| !ft_strncmp(split_attr[0], "C", ft_strlen(split_attr[0]))))
 	{
 		if (!set_color(game, split_attr[0], split_attr[1]))

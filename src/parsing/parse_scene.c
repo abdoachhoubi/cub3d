@@ -1,20 +1,26 @@
 #include "../../includes/cub.h"
 
+int	ft_puts(char *s, int fd)
+{
+	ft_putendl_fd(s, fd);
+	return (1);
+}
+
 int	parse_scene(t_game *game)
 {
 	int	list_size;
 
 	if (!get_scene(game))
-		return (0);
+		exit (ft_puts(RED"Error\nMemory allocation failed", 2));
 	if (!get_attributes(game))
-		return (0);
+		exit(1);
 	if (!check_attributes(game))
-		return (0);
+		exit(1);
 	parse_maps(game);
 	list_size = map_size(game->maps);
 	if (list_size != 1)
-		exit(write(1, "Error\nFound consecutive newlines \
-		'\\n' in the middle of the map\n", 63));
+		exit(ft_puts(RED"Error\nFound consecutive newlines \
+'\\n' in the middle of the map"RESET, 2));
 	game->width = longest_line(game->map);
 	game->height = ft_arrlen(game->map);
 	player_init(game);

@@ -14,7 +14,8 @@ MAIN_SRC= ${addprefix src/, actions_move.c handle_keys.c\
 			main.c textures.c tools.c actions_rotate.c}
 
 PARSING_SRC = ${addprefix src/parsing/, list_utils.c parser_utils.c parser.c parse_attrs1.c\
-			parse_attrs2.c parse_attrs3.c parse_map1.c parse_scene.c}
+			parse_attrs2.c parse_attrs3.c parse_scene.c norm_attr.c parse_map1.c\
+			parse_map2.c parse_map3.c parse_map4.c}
 
 MATH_SRC = ${addprefix src/math_utils/, angles.c step_table.c trig_funcs.c vectors.c}
 
